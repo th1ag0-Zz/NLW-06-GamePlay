@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   image: {
     width: 64,
     height: 68,
-    backgroundColor: theme.colors.secondary60,
+    backgroundColor: theme.colors.secondary40,
     borderColor: theme.colors.secondary50,
     borderWidth: 1,
     borderRadius: 8,

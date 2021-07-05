@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 
 import Profile from '../../components/Profile';
@@ -33,7 +33,6 @@ const Home: React.FC = () => {
       description:
         'É hoje que vamos chegar ao challenger sem perder uma partida da md10',
     },
-
     {
       id: '2',
       guild: {
@@ -69,20 +68,19 @@ const Home: React.FC = () => {
         categorySelected={category}
       />
 
-      <View style={styles.content}>
-        <ListHeader title="Partidas agendadas" subtitle="Total 6" />
+      <ListHeader title="Partidas agendadas" subtitle="Total 6" />
 
-        <FlatList
-          data={appointments}
-          keyExtractor={item => item.id}
-          renderItem={({ item }) => (
-            <Appointments onPress={handleAppointmentDetails} data={item} />
-          )}
-          ItemSeparatorComponent={() => <ListDivider />}
-          style={styles.matches}
-          showsVerticalScrollIndicator={false}
-        />
-      </View>
+      <FlatList
+        data={appointments}
+        keyExtractor={item => item.id}
+        renderItem={({ item }) => (
+          <Appointments onPress={handleAppointmentDetails} data={item} />
+        )}
+        ItemSeparatorComponent={() => <ListDivider />}
+        style={styles.matches}
+        contentContainerStyle={{ paddingBottom: 24 }}
+        showsVerticalScrollIndicator={false}
+      />
     </View>
   );
 };

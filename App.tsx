@@ -10,6 +10,7 @@ import { Inter_400Regular, Inter_500Medium } from '@expo-google-fonts/inter';
 
 import Background from './src/components/Background';
 import Routes from './src/routes';
+import { AuthProvider } from './src/hooks/auth';
 
 export default function App() {
   const [isFontLoaded] = useFonts({
@@ -30,7 +31,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Routes />
+      <AuthProvider>
+        <Routes />
+      </AuthProvider>
     </Background>
   );
 }

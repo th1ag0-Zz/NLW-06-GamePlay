@@ -1,5 +1,10 @@
 import React, { ReactNode } from 'react';
-import { View, Modal, ModalProps } from 'react-native';
+import {
+  View,
+  Modal,
+  ModalProps,
+  TouchableWithoutFeedback,
+} from 'react-native';
 
 import Background from '../Background';
 
@@ -7,19 +12,22 @@ import styles from './styles';
 
 interface Props extends ModalProps {
   children: ReactNode;
+  closeModal: () => void;
 }
 
-const ModalView: React.FC<Props> = ({ children, ...rest }) => {
+const ModalView: React.FC<Props> = ({ closeModal, children, ...rest }) => {
   return (
     <Modal transparent animationType="slide" {...rest}>
-      <View style={styles.overlay}>
-        <View style={styles.container}>
-          <Background>
-            <View style={styles.bar} />
-            {children}
-          </Background>
+      <TouchableWithoutFeedback onPress={closeModal}>
+        <View style={styles.overlay}>
+          <View style={styles.container}>
+            <Background>
+              <View style={styles.bar} />
+              {children}
+            </Background>
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     </Modal>
   );
 };

@@ -31,9 +31,18 @@ const AppointmentCreate: React.FC = () => {
     setOpenGuildsModal(true);
   }
 
+  function handleCloseGuildsModal() {
+    setOpenGuildsModal(false);
+    return true;
+  }
+
   function handleGuildSelect(guildSelect: GuildProps) {
     setGuild(guildSelect);
     setOpenGuildsModal(false);
+  }
+
+  function hanldeCategorySelect(categoryId: string) {
+    setCategory(categoryId);
   }
 
   return (
@@ -54,7 +63,7 @@ const AppointmentCreate: React.FC = () => {
 
         <CategorySelect
           hasCheckBox
-          setCategory={setCategory}
+          setCategory={hanldeCategorySelect}
           categorySelected={category}
         />
 
@@ -79,7 +88,9 @@ const AppointmentCreate: React.FC = () => {
 
           <View style={styles.field}>
             <View>
-              <Text style={styles.label}>Dia e mês</Text>
+              <Text style={[styles.label, { marginBottom: 12 }]}>
+                Dia e mês
+              </Text>
 
               <View style={styles.column}>
                 <SmallInput maxLength={2} />
@@ -89,7 +100,9 @@ const AppointmentCreate: React.FC = () => {
             </View>
 
             <View>
-              <Text style={styles.label}>Hora e minuto</Text>
+              <Text style={[styles.label, { marginBottom: 12 }]}>
+                Hora e minuto
+              </Text>
 
               <View style={styles.column}>
                 <SmallInput maxLength={2} />
@@ -116,7 +129,7 @@ const AppointmentCreate: React.FC = () => {
         </View>
       </ScrollView>
 
-      <ModalView visible={openGuildsModal}>
+      <ModalView visible={openGuildsModal} closeModal={handleCloseGuildsModal}>
         <Guilds handleGuildSelected={handleGuildSelect} />
       </ModalView>
     </KeyboardAvoidingView>

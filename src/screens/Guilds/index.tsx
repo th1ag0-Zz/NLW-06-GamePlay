@@ -25,6 +25,7 @@ const Guilds: React.FC<Props> = ({ handleGuildSelected }) => {
       owner: true,
     },
   ];
+
   return (
     <View style={styles.container}>
       <FlatList
@@ -35,6 +36,7 @@ const Guilds: React.FC<Props> = ({ handleGuildSelected }) => {
         )}
         ItemSeparatorComponent={() => <ListDivider />}
         showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 24 }}
         style={styles.guilds}
       />
     </View>

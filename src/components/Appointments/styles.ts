@@ -19,6 +19,15 @@ const styles = StyleSheet.create({
     marginBottom: 12,
   },
 
+  guildIconContainer: {
+    height: 68,
+    width: 64,
+    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 20,
+  },
+
   title: {
     fontFamily: theme.fonts.title700,
     color: theme.colors.heading,
