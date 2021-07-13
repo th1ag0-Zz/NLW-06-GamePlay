@@ -1,13 +1,28 @@
 import React from 'react';
-import { Image } from 'react-native';
+import { Image, View } from 'react-native';
 
 import styles from './styles';
+import DiscordSvg from '../../assets/discord.svg';
 
-const GuildIcon: React.FC = () => {
-  const uri =
-    'https://theouterhaven.b-cdn.net/wp-content/uploads/2018/04/sv7xsk8eqglhkjug3erd-750x400.jpg';
+const { CDN_IMAGE } = process.env;
 
-  return <Image source={{ uri }} style={styles.image} resizeMode="cover" />;
+interface Props {
+  guildId: string;
+  iconId: string | null;
+}
+
+const GuildIcon: React.FC<Props> = ({ guildId, iconId }) => {
+  const uri = `${CDN_IMAGE}/icons/${guildId}/${iconId}.png`;
+
+  return (
+    <View style={styles.container}>
+      {iconId ? (
+        <Image source={{ uri }} style={styles.image} resizeMode="cover" />
+      ) : (
+        <DiscordSvg width={40} height={40} />
+      )}
+    </View>
+  );
 };
 
 export default GuildIcon;

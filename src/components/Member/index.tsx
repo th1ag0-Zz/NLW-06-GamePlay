@@ -8,8 +8,8 @@ import styles from './styles';
 
 export interface MemberData {
   id: string;
-  userName: string;
-  avatar_URL: string;
+  username: string;
+  avatar_url: string;
   status: string;
 }
 
@@ -23,10 +23,10 @@ const Member: React.FC<MemberProps> = ({ data }) => {
 
   return (
     <View style={styles.container}>
-      <Avatar urlImage={data.avatar_URL} />
+      <Avatar urlImage={data.avatar_url} />
 
       <View>
-        <Text style={styles.title}>{data.userName}</Text>
+        <Text style={styles.title}>{data.username}</Text>
 
         <View style={styles.status}>
           <View
